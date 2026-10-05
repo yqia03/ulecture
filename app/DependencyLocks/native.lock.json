@@ -1,0 +1,58 @@
+{
+  "pdfium-7999": {
+    "name": "PDFium",
+    "version": "153.0.7999.0",
+    "sourceCommit": "e9fc01804a0c5224ea780ad782abb8cfede628ef",
+    "sourceURL": "https://pdfium.googlesource.com/pdfium/+/e9fc01804a0c5224ea780ad782abb8cfede628ef",
+    "artifactURL": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7999/pdfium-mac-arm64.tgz",
+    "artifactSHA256": "e214ee33f22b2204daa765a545aee1e425d88448e6154dac95c6a06206b7437f",
+    "artifactBuilder": "bblanchon/pdfium-binaries",
+    "architecture": "arm64",
+    "minimumMacOS": "13.0",
+    "appMinimumMacOS": "14.0",
+    "v8": false,
+    "xfa": false,
+    "license": "BSD-style; bundled LICENSE and licenses/* apply",
+    "localChanges": "No source changes. Packaging sets library install_name to @rpath/libpdfium.dylib, links the helper through @executable_path and adds ad-hoc signatures."
+  },
+  "libreoffice-26.8.0": {
+    "name": "LibreOffice",
+    "version": "26.8.0.3",
+    "sourceCommit": "bce0998afefdbc355585ca324285661a2170ba77",
+    "sourceURL": "https://git.libreoffice.org/core/+/bce0998afefdbc355585ca324285661a2170ba77",
+    "sourceArchive": "https://download.documentfoundation.org/libreoffice/src/26.8.0/",
+    "artifactURL": "https://download.documentfoundation.org/libreoffice/stable/26.8.0/mac/aarch64/LibreOffice_26.8.0_MacOS_aarch64.dmg",
+    "artifactSHA256": "8858d8058da4f862f47559486814e65efc27294da67c5e4bb56b006b1ee59f89",
+    "artifactBytes": 298773447,
+    "architecture": "arm64",
+    "minimumMacOS": "11.0.0",
+    "appMinimumMacOS": "14.0",
+    "license": "MPL-2.0 and bundled Contents/Resources/LICENSE and NOTICE",
+    "localChanges": "None; official app copied into managed conversion resources. Uses a new per-job profile with macros/external updates disabled and a network-denying process sandbox."
+  },
+  "whisper.cpp": {
+    "version": "927cfce34f31707e17f2bff35c349632fb9e2c3a",
+    "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/927cfce34f31707e17f2bff35c349632fb9e2c3a",
+    "sha256": "41b664fee09e79176ac277b5237debec34f8d74af3c7d71f333f1ec67989ecde",
+    "license": "MIT"
+  },
+  "cmake": {
+    "version": "3.31.6",
+    "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-macos-universal.tar.gz",
+    "sha256": "330b9514f5112e5ed4fb08b8b05803b776fd9b539a6ae12927d14dcc0ee2ba8d",
+    "license": "BSD-3-Clause"
+  },
+  "uv": {
+    "version": "0.11.7",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.11.7/uv-aarch64-apple-darwin.tar.gz",
+    "sha256": "66e37d91f839e12481d7b932a1eccbfe732560f42c1cfb89faddfa2454534ba8",
+    "license": "MIT OR Apache-2.0"
+  },
+  "python": {
+    "version": "3.12.12",
+    "build": "20260211",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260211/cpython-3.12.12%2B20260211-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "sha256": "22625deaf5757e7c266cf1a096c9151a06b598b1e14632a2ec9993d58ec5fe84",
+    "license": "Python-2.0 and bundled third-party licenses"
+  }
+}

@@ -1,0 +1,30 @@
+# Generated, private and heavyweight inputs
+.DS_Store
+.scratch/
+dist/
+app/build/
+app/evidence/
+app/Dependencies/
+app/Resources/Models/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.sqlite*
+*.caf
+*.wav
+*.mp4
+*.mov
+# Historical private project documentation; publish reviewed docs explicitly
+/docs/*
+!/docs/ulecture/
+/docs/ulecture/*
+!/docs/ulecture/user-guide.md
+/app/IMPLEMENTATION.md
+app/.build/
+
+# Generated deterministic documents; rebuild with prepare-test-fixtures.sh.
+app/Tests/Fixtures/Conversion/

@@ -1,0 +1,31 @@
+name: 问题反馈 / Bug report
+description: 报告可复现的 ULecture 问题。
+body:
+  - type: markdown
+    attributes:
+      value: 请使用虚构资料复现。不要提交 API Key、账号、真实课程、录音、转写、私人路径或原始日志。
+  - type: input
+    id: version
+    attributes:
+      label: ULecture 版本与 macOS 版本
+      placeholder: 例如 ULecture 1.1.0、macOS 26.6.2、Apple Silicon
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 操作步骤和实际结果
+      description: 请说明音源、同传模式、界面语言、窗口/字幕设置等相关条件。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已清理的证据
+      description: 可添加虚构资料、截图或错误提示。上传前再次检查是否含私人内容；保存问题请先保留本机恢复副本。

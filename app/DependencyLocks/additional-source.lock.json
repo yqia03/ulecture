@@ -1,0 +1,60 @@
+[
+  {
+    "name": "flatbuffers",
+    "version": "25.12.19",
+    "url": "https://codeload.github.com/google/flatbuffers/tar.gz/refs/tags/v25.12.19",
+    "sha256": "f81c3162b1046fe8b84b9a0dbdd383e24fdbcf88583b9cb6028f90d04d90696a",
+    "file": "flatbuffers-25.12.19.tar.gz"
+  },
+  {
+    "name": "onnxruntime",
+    "version": "1.30.0",
+    "url": "https://codeload.github.com/microsoft/onnxruntime/tar.gz/refs/tags/v1.30.0",
+    "sha256": "f6681ecbddf53898adf0cc9e8e9e84657485b84d2eca3c8aa353de6d7dd417ef",
+    "file": "onnxruntime-1.30.0.tar.gz"
+  },
+  {
+    "name": "mupdf",
+    "version": "1.28.2",
+    "url": "https://mupdf.com/downloads/archive/mupdf-1.28.2-source.tar.gz",
+    "sha256": "44075a84e329db55b9bef5f342a70fd26d69e48ad1d33cb89d9664581c641156",
+    "file": "mupdf-1.28.2-source.tar.gz",
+    "license": "AGPL-3.0"
+  },
+  {
+    "name": "gcc",
+    "version": "13.4.0",
+    "url": "https://ftp.gnu.org/gnu/gcc/gcc-13.4.0/gcc-13.4.0.tar.xz",
+    "sha256": "9c4ce6dbb040568fdc545588ac03c5cbc95a8dbf0c7aa490170843afb59ca8f5",
+    "file": "gcc-13.4.0.tar.xz",
+    "purpose": "SciPy arm64 wheel libgfortran, libgcc_s and libquadmath corresponding source; exact compiler version from installed wheel __config__.py"
+  },
+  {
+    "name": "homebrew-gcc13-formula.rb",
+    "url": "https://raw.githubusercontent.com/Homebrew/homebrew-core/d17f3939dc55c4a42a6e5833a8353d0948bbd416/Formula/g/gcc@13.rb",
+    "sha256": "1ef04d2c64f88e549a8c924dfd49e1b474220d1795547b02936786e40d3b44f9",
+    "file": "homebrew-gcc13-formula.rb",
+    "purpose": "Homebrew gcc@13 recipe available at SciPy wheel publication"
+  },
+  {
+    "name": "homebrew-gcc-13.4.0-darwin.diff",
+    "url": "https://raw.githubusercontent.com/Homebrew/homebrew-core/d17f3939dc55c4a42a6e5833a8353d0948bbd416/Patches/gcc/gcc-13.4.0.diff",
+    "sha256": "60b22ae7f5f78b41e12c51d8c6e99ba933a7e124454fe8cdbff7200505167949",
+    "file": "homebrew-gcc-13.4.0-darwin.diff",
+    "purpose": "Homebrew GCC 13.4.0 Darwin and Apple Silicon patch"
+  },
+  {
+    "name": "homebrew-core-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/Homebrew/homebrew-core/d17f3939dc55c4a42a6e5833a8353d0948bbd416/LICENSE.txt",
+    "sha256": "f80329e58613ad669c0e73cb132d8060b9b2c55e339c73848068e4d1567f4627",
+    "file": "homebrew-core-LICENSE.txt",
+    "purpose": "License for preserved Homebrew formula"
+  },
+  {
+    "name": "scipy-1.18.1-wheel-workflow.yml",
+    "url": "https://raw.githubusercontent.com/scipy/scipy/v1.18.1/.github/workflows/wheels.yml",
+    "sha256": "4e8c5b7627cf74b51d716eafcdf3ec47ea635dcaac1a45daa39025a63b5b11ed",
+    "file": "scipy-1.18.1-wheel-workflow.yml",
+    "purpose": "SciPy wheel build workflow; arm64 Accelerate uses gfortran-13"
+  }
+]

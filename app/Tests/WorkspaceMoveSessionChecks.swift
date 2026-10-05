@@ -1,0 +1,83 @@
+import Foundation
+
+@main enum WorkspaceMoveSessionChecks {
+    static func main() throws {
+        let base = URL(fileURLWithPath: CommandLine.arguments[1]), fm = FileManager.default
+        try fm.createDirectory(at: base, withIntermediateDirectories: true)
+        let fixture = base.appendingPathComponent("source.md")
+        try Data("Linked source must survive cross-course folder move".utf8).write(to: fixture)
+        var library: LibraryStore? = try LibraryStore(rootURL: base.appendingPathComponent("catalog"))
+        var catalog: WorkspaceCatalog? = WorkspaceCatalog(library: library!)
+        let a = try catalog!.createCourse(title: "CourseA"), b = try catalog!.createCourse(title: "CourseB")
+        let source = try catalog!.projectRoot(a.id), target = try catalog!.projectRoot(b.id)
+        let folder = try catalog!.create(kind: .folder, title: "Week1", parentID: a.id)
+        let nested = try catalog!.create(kind: .folder, title: "Nested", parentID: folder.id)
+        let document = try catalog!.importDocument(from: fixture, parentID: nested.id)
+        let classroom = try catalog!.create(kind: .classroom, title: "Logical classroom", parentID: nested.id)
+        try catalog!.link(documentID: document.id, sessionID: classroom.id)
+        let transcriptRoot = base.appendingPathComponent("Transcripts")
+        try library!.configureTranscriptStorage(rootURL: transcriptRoot)
+        let transcript = TranscriptRecord(id: UUID().uuidString, classroomID: classroom.id, epochID: UUID().uuidString, startMS: 0, endMS: 500, text: "Original classroom", language: "en")
+        try library!.saveTranscript(transcript)
+        let originalDirectory = try library!.transcriptStore!.directory(for: classroom), originalHash = try WorkspaceCatalog.contentHash(catalog!.documentURL(id: document.id))
+        let annotations = try catalog!.metadataDirectory(documentID: document.id)
+        try Data("Original page annotations".utf8).write(to: annotations.appendingPathComponent("fixture.json"))
+        try catalog!.move(id: folder.id, parentID: b.id)
+        var checks: [String] = []
+        func check(_ condition: @autoclosure () throws -> Bool, _ title: String) throws { guard try condition() else { throw LibraryError.message("FAILED: " + title) }; checks.append(title) }
+        try check(try library!.item(id: classroom.id)?.courseID == a.id && library!.item(id: classroom.id)?.parentID == a.id, "logical classroom returns to original course when physical ancestor moves across projects")
+        try check(try library!.item(id: document.id)?.courseID == b.id && library!.item(id: nested.id)?.courseID == b.id, "real nested folders and documents acquire target project ownership")
+        try check(try catalog!.linkedDocumentIDs(sessionID: classroom.id).contains(document.id), "classroom still opens the moved linked document by stable identity")
+        try check(try WorkspaceCatalog.contentHash(catalog!.documentURL(id: document.id)) == originalHash && !fm.fileExists(atPath: source.appendingPathComponent("Week1").path), "physical files move with exact original content")
+        try check(try String(contentsOf: catalog!.metadataDirectory(documentID: document.id).appendingPathComponent("fixture.json")) == "Original page annotations", "linked document annotations follow the moved document")
+        try check(try library!.transcriptStore!.directory(for: library!.item(id: classroom.id)!).path == originalDirectory.path, "classroom keeps independent physical transcript directory")
+        try check(try catalog!.recoverFileOperations().isEmpty, "completed folder move does not replay or duplicate sessions")
+        catalog = nil; library = nil
+        library = try LibraryStore(rootURL: base.appendingPathComponent("catalog")); catalog = WorkspaceCatalog(library: library!)
+        try library!.configureTranscriptStorage(rootURL: transcriptRoot)
+        try check(try library!.transcripts(classroomID: classroom.id).first?.text == transcript.text && library!.item(id: classroom.id)?.parentID == a.id, "session ownership and transcripts survive complete catalog reopen")
+        let sameCourse = try catalog!.create(kind: .classroom, title: "Same-course grouping", parentID: nested.id)
+        let other = try catalog!.create(kind: .folder, title: "Other", parentID: b.id)
+        try catalog!.move(id: folder.id, parentID: other.id)
+        try check(try library!.item(id: sameCourse.id)?.parentID == nested.id && library!.item(id: sameCourse.id)?.courseID == b.id, "within-course folder move retains logical classroom grouping")
+        try fm.moveItem(at: target.appendingPathComponent("Other/Week1"), to: source.appendingPathComponent("FinderMoved"))
+        try catalog!.scan(projectID: a.id)
+        try check(try library!.item(id: sameCourse.id)?.parentID == b.id && library!.item(id: sameCourse.id)?.courseID == b.id, "Finder cross-project ancestor move also retains logical session ownership")
+        try check(try catalog!.locator(id: document.id)?.projectID == a.id && catalog!.linkedDocumentIDs(sessionID: classroom.id).contains(document.id), "Finder move preserves document identity and all classroom references")
+
+        let recoveryBase = base.appendingPathComponent("Interrupted")
+        let recoveryLibrary = try LibraryStore(rootURL: recoveryBase.appendingPathComponent("catalog")), recoveryCatalog = WorkspaceCatalog(library: recoveryLibrary)
+        let recoveryA = try recoveryCatalog.createCourse(title: "A"), recoveryB = try recoveryCatalog.createCourse(title: "B")
+        let originalA = try recoveryCatalog.projectRoot(recoveryA.id), originalB = try recoveryCatalog.projectRoot(recoveryB.id)
+        let recoveryFixture = recoveryBase.appendingPathComponent("source.txt")
+        try Data("Source for interrupted copy".utf8).write(to: recoveryFixture)
+        let recoveryDocument = try recoveryCatalog.importDocument(from: recoveryFixture, parentID: recoveryA.id)
+        let originalMetadata = try recoveryCatalog.metadataDirectory(documentID: recoveryDocument.id)
+        try Data("annotation revision".utf8).write(to: originalMetadata.appendingPathComponent("first.json"))
+        try fm.createDirectory(at: originalMetadata.appendingPathComponent("versions"), withIntermediateDirectories: true)
+        try Data("immutable snapshot".utf8).write(to: originalMetadata.appendingPathComponent("versions/source.bin"))
+        let metadataManifest = try WorkspaceCatalog.manifest(originalMetadata)
+        let originalFile = originalA.appendingPathComponent("source.txt"), copiedFile = originalB.appendingPathComponent("source.txt")
+        try fm.copyItem(at: originalFile, to: copiedFile)
+        let journal = WorkspaceFileJournal(itemID: recoveryDocument.id, operation: "move", source: originalFile.path, destination: copiedFile.path, sourceProjectID: recoveryA.id, destinationProjectID: recoveryB.id, destinationParentID: recoveryB.id, destinationTitle: "source", sourceRelativePath: "source.txt", destinationRelativePath: "source.txt", manifest: try WorkspaceCatalog.manifest(originalFile), phase: "copied")
+        try recoveryLibrary.putRecord(collection: "filesystem-journals", id: journal.id, ownerID: recoveryDocument.id, value: journal)
+        // A killed metadata copy is confined to its hidden staging directory, never the published sidecar.
+        let partial = originalB.appendingPathComponent(".ulecture/documents/.copy-" + recoveryDocument.id + "-interrupted")
+        try fm.createDirectory(at: partial, withIntermediateDirectories: true)
+        try Data("partial".utf8).write(to: partial.appendingPathComponent("first.json"))
+        let relocatedA = recoveryBase.appendingPathComponent("A-relocated"), relocatedB = recoveryBase.appendingPathComponent("B-relocated")
+        try fm.moveItem(at: originalA, to: relocatedA); try fm.moveItem(at: originalB, to: relocatedB)
+        for (id, url) in [(recoveryA.id, relocatedA), (recoveryB.id, relocatedB)] {
+            var mount = try recoveryCatalog.mount(id: id)!; mount.rootPath = url.path
+            try recoveryLibrary.putRecord(collection: "project-mounts", id: id, ownerID: id, value: mount)
+        }
+        let messages = try recoveryCatalog.recoverFileOperations()
+        try check(messages.count == 1 && messages[0].contains("已恢复"), "interrupted file operation resolves relocated project roots from stable IDs and relative paths")
+        try check(try recoveryCatalog.documentURL(id: recoveryDocument.id).path == relocatedB.appendingPathComponent("source.txt").standardizedFileURL.path, "recovery publishes the document under the current target root")
+        try check(try WorkspaceCatalog.manifest(recoveryCatalog.metadataDirectory(documentID: recoveryDocument.id)) == metadataManifest, "partial staged sidecar does not block verified metadata publication on retry")
+        try check(fm.fileExists(atPath: relocatedB.appendingPathComponent(".ulecture/documents/" + partial.lastPathComponent + "/first.json").path), "interrupted metadata staging bytes are retained for inspection")
+        try check(fm.fileExists(atPath: relocatedA.appendingPathComponent(".ulecture/move-recovery/" + journal.id + "/source.txt").path), "relocated source remains available in durable move recovery storage")
+        try check(try recoveryCatalog.recoverFileOperations().isEmpty, "recovered relocated operation is idempotent")
+        print(String(decoding: try JSONSerialization.data(withJSONObject: ["passed": checks.count, "checks": checks], options: [.prettyPrinted, .sortedKeys]), as: UTF8.self))
+    }
+}

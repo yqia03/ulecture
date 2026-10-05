@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>local.uway.classroom.internal</string>
+	<key>CFBundleName</key>
+	<string>ULecture</string>
+	<key>CFBundleDisplayName</key>
+	<string>ULecture</string>
+	<key>CFBundleExecutable</key>
+	<string>ULecture</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>20261005.1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ULecture uses the selected microphone only when you start a classroom, interpretation session or sound check. Online modes send audio to your chosen provider. Recording is off by default.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>ULecture captures system audio only when you start a session or sound check, excluding this app’s audio. Online modes send audio to your chosen provider. Recording is off by default.</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>zh-Hans</string>
+		<string>zh-Hant</string>
+		<string>ja</string>
+	</array>
+	<key>CFBundleIconFile</key>
+	<string>ULecture</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 ULecture contributors. AGPL-3.0-only.</string>
+</dict>
+</plist>

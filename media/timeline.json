@@ -1,0 +1,96 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 75,
+  "repository": "https://github.com/yqia03/ulecture",
+  "music": {
+    "title": "Connections",
+    "bpm": 96,
+    "narration": false,
+    "vocals": false
+  },
+  "scenes": [
+    {
+      "start": 0,
+      "end": 7.5,
+      "kind": "brand",
+      "zh": "把理解，连接起来。",
+      "en": "Bring your learning together."
+    },
+    {
+      "start": 7.5,
+      "end": 15,
+      "kind": "ui",
+      "source": 0,
+      "zh": "课程资料，井然有序",
+      "en": "Keep every course in one place."
+    },
+    {
+      "start": 15,
+      "end": 25,
+      "kind": "ui",
+      "source": 7,
+      "zh": "阅读课件，随手记录",
+      "en": "Read your materials. Capture your thoughts."
+    },
+    {
+      "start": 25,
+      "end": 32.5,
+      "kind": "ui",
+      "source": 19,
+      "zh": "把新知识，写成自己的理解",
+      "en": "Make new ideas your own."
+    },
+    {
+      "start": 32.5,
+      "end": 52.5,
+      "kind": "captions",
+      "source": 45,
+      "zh": "逐行向上，思路不断",
+      "en": "Follow each line without losing your place."
+    },
+    {
+      "start": 52.5,
+      "end": 59.5,
+      "kind": "files_ui",
+      "source": 38,
+      "zh": "自动保存，两份清晰记录",
+      "en": "Two readable files, saved automatically."
+    },
+    {
+      "start": 59.5,
+      "end": 67.5,
+      "kind": "files",
+      "zh": "原文一份，双语一份",
+      "en": "Source text. And source with translation."
+    },
+    {
+      "start": 67.5,
+      "end": 75,
+      "kind": "end",
+      "zh": "让每一次理解，继续生长。",
+      "en": "Keep building on what you learn."
+    }
+  ],
+  "subtitleDetails": [
+    {
+      "start": 32.5,
+      "end": 39,
+      "zh": "原文与译文，分别连续滚动",
+      "en": "Source and translation scroll independently."
+    },
+    {
+      "start": 39,
+      "end": 46,
+      "zh": "每次前进一行，保留上下文",
+      "en": "Move one visual line at a time, keeping the context."
+    },
+    {
+      "start": 46,
+      "end": 52.5,
+      "zh": "文字修订与译文到达，连续衔接",
+      "en": "Revisions and arriving translations stay connected."
+    }
+  ]
+}

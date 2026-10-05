@@ -1,0 +1,68 @@
+[
+  {
+    "repository": "satbyy/go-noto-universal",
+    "revision": "0f4be64616e29390e3063970ed7f6afe77356d39",
+    "file": "Licenses/Assets/satbyy-go-noto-universal-UNLICENSE.txt",
+    "url": "https://raw.githubusercontent.com/satbyy/go-noto-universal/0f4be64616e29390e3063970ed7f6afe77356d39/UNLICENSE.txt",
+    "sha256": "93b59296492209e4b1a1e573d302eef2f85ac830644c1482f9f80a7c75b0a8ec"
+  },
+  {
+    "repository": "Pal3love/Source-Han-TrueType",
+    "revision": "61aaa8fab36e03d8e01f3b141b73ac6b06194824",
+    "file": "Licenses/Assets/Pal3love-Source-Han-TrueType-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/Pal3love/Source-Han-TrueType/61aaa8fab36e03d8e01f3b141b73ac6b06194824/LICENSE.txt",
+    "sha256": "cc6e759572f45be3ff001e8ac08f855fc913c8797373e7cab71ba4c63e1d6b02"
+  },
+  {
+    "repository": "lxgw/LxgwWenKaiGB",
+    "revision": "6ceaf966f41aec8cae1e865167acc2bb7b5ae368",
+    "file": "Licenses/Assets/lxgw-LxgwWenKaiGB-OFL.txt",
+    "url": "https://raw.githubusercontent.com/lxgw/LxgwWenKaiGB/6ceaf966f41aec8cae1e865167acc2bb7b5ae368/OFL.txt",
+    "sha256": "a8aa32c38a3402ba4e40fb6d39c913300dd4a0336290dce5c14e3a2f9308d092"
+  },
+  {
+    "repository": "lxgw/LxgwWenkaiTC",
+    "revision": "55e77118285a064250abd0324da312223806368a",
+    "file": "Licenses/Assets/lxgw-LxgwWenkaiTC-OFL.txt",
+    "url": "https://raw.githubusercontent.com/lxgw/LxgwWenkaiTC/55e77118285a064250abd0324da312223806368a/OFL.txt",
+    "sha256": "1a13783bf4337242834b60309cdcdbeb566ae3f923576fdbba8b78db9d174def"
+  },
+  {
+    "repository": "fontworks-fonts/Klee",
+    "revision": "8b0532731b63ad8a445ca341d8d7d941079b83ab",
+    "file": "Licenses/Assets/fontworks-fonts-Klee-OFL.txt",
+    "url": "https://raw.githubusercontent.com/fontworks-fonts/Klee/8b0532731b63ad8a445ca341d8d7d941079b83ab/OFL.txt",
+    "sha256": "e376b0df8e8a2345a9533db6f0a5333a1107975569ad9d1973a7ee557161ca38"
+  },
+  {
+    "repository": "fonts-archive/MaruBuri",
+    "revision": "977eeff68d1d40bcef341f09c1f56cce1903bb8a",
+    "file": "Licenses/Assets/fonts-archive-MaruBuri-README.md",
+    "url": "https://raw.githubusercontent.com/fonts-archive/MaruBuri/977eeff68d1d40bcef341f09c1f56cce1903bb8a/README.md",
+    "sha256": "78b42df05fd35a433c7cec825591fac5608491f164e679802b02be7200facdc8"
+  },
+  {
+    "repository": "googlefonts/noto-fonts",
+    "revision": "ffebf8c1ee449e544955a7e813c54f9b73848eac",
+    "file": "Licenses/Assets/googlefonts-noto-fonts-LICENSE",
+    "url": "https://raw.githubusercontent.com/googlefonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/LICENSE",
+    "sha256": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+  },
+  {
+    "repository": "adobe-type-tools/cmap-resources",
+    "revision": "f5cf3bca7fdfeaceb77aa82847e974f2306c20b4",
+    "file": "Licenses/Assets/adobe-type-tools-cmap-resources-LICENSE.md",
+    "url": "https://raw.githubusercontent.com/adobe-type-tools/cmap-resources/f5cf3bca7fdfeaceb77aa82847e974f2306c20b4/LICENSE.md",
+    "sha256": "742665db9c8e1bc72603c6d319ca3e90b83bd6d95202f0cd4ef11068a07a9c29"
+  },
+  {
+    "url": "https://help.naver.com/service/30016/contents/18088?osType=PC&lang=ko",
+    "file": "Licenses/Assets/Naver-MaruBuri-OFL.txt",
+    "sha256": "e9ec34d8e7c78d39fa98ce9598ad0be1273ecd911d6bb867d9fe0b2751c2c2cb"
+  },
+  {
+    "url": "https://huggingface.co/wybxc/DocLayout-YOLO-DocStructBench-onnx/raw/ee7c3d744e5c47c58e267044ac825f95abe69653/README.md",
+    "file": "Licenses/Assets/DocLayout-ONNX-model-card.md",
+    "sha256": "ef30e30b57e315278703ddd7baf813df88f1594e2f4c0a8b2696a326a9ce8ad8"
+  }
+]

@@ -1,0 +1,2 @@
+"NSMicrophoneUsageDescription" = "僅在你開始課堂、同傳或試音時使用所選麥克風。線上模式會將音訊傳送給你選擇的服務商。錄音保留預設關閉。";
+"NSScreenCaptureUsageDescription" = "僅在你開始工作階段或試音時擷取系統音訊，並排除此應用程式的聲音。線上模式會將音訊傳送給你選擇的服務商。錄音保留預設關閉。";

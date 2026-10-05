@@ -1,0 +1,2 @@
+"NSMicrophoneUsageDescription" = "ULecture uses the selected microphone only when you start a classroom, interpretation session or sound check. Online modes send audio to your chosen provider. Recording is off by default.";
+"NSScreenCaptureUsageDescription" = "ULecture captures system audio only when you start a session or sound check, excluding this app’s audio. Online modes send audio to your chosen provider. Recording is off by default.";

@@ -1,0 +1,10 @@
+{
+  "purpose": "Fictional synthetic speech for real local ASR regression. Not microphone or system audio capture. No reference text is supplied to ASR.",
+  "files": {
+    "fictional-lecture-ja.flac": "2dc66d6f8bb867dff3009f1744267007a22110a35f8819e77d48645860d61b1f",
+    "fictional-lecture-en.flac": "3512755a69e319902af163a4f136b6be1e7fa6a70858767bdc8a972ec5899347",
+    "fictional-lecture-en.txt": "4d47fa98b86a36b870489ce289dcf7bffc7f559f6f437fa24ada502d3e9ba14f",
+    "fictional-lecture-ja.txt": "b88efaaab69d37009f46503cbdb68be68bf4bc8a3f99cc03ca35079fddbf3e3e"
+  },
+  "license": "Project-created fictional text and synthetic output, AGPL-3.0-only; generation models Apache-2.0. See media model locks."
+}

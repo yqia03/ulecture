@@ -1,0 +1,62 @@
+import Foundation
+
+enum InterpretationOnlineText {
+    static func text(_ key: String, language: String) -> String {
+        let index = language == "zh-Hans" ? 0 : language == "zh-Hant" ? 1 : language == "ja" ? 3 : 2
+        return values[key]?[index] ?? InterpretationText.text(key, language: language)
+    }
+    static let values: [String: [String]] = [
+        "showOlderTranscript": ["显示较早内容", "顯示較早內容", "Show earlier text", "以前の内容を表示"],
+        "sourceTXT": ["原文 TXT", "原文 TXT", "Source TXT", "原文 TXT"],
+        "bilingualTXT": ["双语 TXT", "雙語 TXT", "Bilingual TXT", "対訳 TXT"],
+        "transcriptAutoSaveTXT": ["自动保存为 TXT", "自動儲存為 TXT", "Automatically saved as TXT", "TXT に自動保存"],
+        "onlineSaveModel": ["保存同传模型", "儲存同傳模型", "Save interpretation model", "通訳モデルを保存"],
+        "onlineSourceHint": ["来源语言记录", "來源語言記錄", "Source language hint", "入力言語の記録"],
+        "onlineCostUnknown": ["未知（含未经核实的模型价率）", "未知（含未經核實的模型費率）", "Unknown (includes an unverified model rate)", "不明（未確認のモデル料金を含みます）"],
+        "interpretationService": ["同声传译服务", "同聲傳譯服務", "Live interpretation service", "同時通訳サービス"],
+        "interpretationMode": ["同传模式", "同傳模式", "Interpretation mode", "通訳モード"],
+        "googleOnline": ["Google 在线同传", "Google 線上同傳", "Google live interpretation", "Google オンライン同時通訳"],
+        "openAIOnline": ["OpenAI 在线同传", "OpenAI 線上同傳", "OpenAI live interpretation", "OpenAI オンライン同時通訳"],
+        "localSpeechText": ["本地识别＋在线文本翻译", "本機辨識＋線上文字翻譯", "Local recognition + online text translation", "ローカル認識＋オンラインテキスト翻訳"],
+        "onlineNoModel": ["在线模式无需安装或加载本地语音模型。", "線上模式無需安裝或載入本機語音模型。", "Online modes do not install or load local speech models.", "オンラインモードではローカル音声モデルは不要です。"],
+        "legacyAIService": ["现有文本翻译使用主 AI 服务配置。", "現有文字翻譯使用主要 AI 服務設定。", "This text translation pipeline uses the main AI service settings.", "既存のテキスト翻訳はメイン AI サービス設定を使用します。"],
+        "onlineAutoLanguage": ["在线服务自动识别源语言；英语／日语选择仅记录来源。", "線上服務自動辨識來源語言；英語／日語選擇僅記錄來源。", "The service detects the source language; English/Japanese is recorded as a source hint only.", "入力言語はサービスが自動検出します。英語／日本語の選択は記録用です。"],
+        "onlineScriptHelp": ["字幕简繁可在本机转换；中文译音和口音由模型决定。", "字幕簡繁可在本機轉換；中文譯音和口音由模型決定。", "Subtitle script can be converted locally; Chinese speech and accent are determined by the model.", "字幕の簡繁変換はローカル処理です。中国語音声とアクセントはモデルが決定します。"],
+        "onlineMuteHelp": ["仅关闭本机播放，服务可能继续生成并计费。暂停会停止新增上传并关闭会话。", "僅關閉本機播放，服務可能繼續產生並計費。暫停會停止新增上傳並關閉工作階段。", "Disabling playback does not stop generation or billing. Pause stops new uploads and closes the session.", "再生をオフにしても生成や課金は停止しません。一時停止で新規送信を止め、セッションを閉じます。"],
+        "onlineVoice": ["播放译音", "播放譯音", "Play translated audio", "翻訳音声を再生"],
+        "onlineVolume": ["译音音量", "譯音音量", "Translation volume", "翻訳音量"],
+        "onlineSource": ["原文字幕", "原文字幕", "Source transcript", "原文字幕"],
+        "onlineTarget": ["译文字幕", "譯文字幕", "Translated transcript", "翻訳字幕"],
+        "onlineIndependentTracks": ["两条字幕独立到达；显示时间为本机接收估算，不代表逐句精确对齐。", "兩條字幕獨立到達；顯示時間為本機接收估算，不代表逐句精確對齊。", "Tracks arrive independently. Display times are local estimates, not precise sentence alignment.", "字幕は別々に届きます。表示時刻は受信時刻の推定で、文単位の正確な対応ではありません。"],
+        "onlineNewSessionRequired": ["此会话已开始；更换模式或目标语言请新建同传。", "此工作階段已開始；更換模式或目標語言請新增同傳。", "Create a new session to change mode or target language after starting.", "開始後にモードや翻訳先言語を変えるには新しい通訳を作成してください。"],
+        "onlineUseMainKey": ["复用主 AI 服务的同厂商 Key", "重用主要 AI 服務的同廠商 Key", "Reuse the matching main AI service key", "同じ提供元のメイン AI キーを再利用"],
+        "onlineKeyOnly": ["仅复用 Key；同传模型单独选择，不继承聊天模型。", "僅重用 Key；同傳模型獨立選擇，不繼承聊天模型。", "Only the key is reused. The interpretation model is selected separately.", "キーのみ再利用します。通訳モデルは個別に選択します。"],
+        "onlineIndependentKey": ["独立 Key", "獨立 Key", "Independent key", "専用キー"],
+        "onlineModel": ["同传模型 ID", "同傳模型 ID", "Interpretation model ID", "通訳モデル ID"],
+        "onlineModelHelp": ["预设使用专用语音翻译协议。高级模型 ID 需握手验证；聊天兼容不代表实时音频兼容。", "預設使用專用語音翻譯協定。進階模型 ID 需交握驗證；聊天相容不代表即時音訊相容。", "Presets use dedicated translation protocols. Advanced IDs require a handshake; chat compatibility does not imply realtime audio support.", "専用翻訳プロトコルを使用します。任意のモデル ID は接続検証が必要です。チャット互換は音声互換を意味しません。"],
+        "onlineProtocolTest": ["测试同传连接", "測試同傳連線", "Test interpretation connection", "通訳接続をテスト"],
+        "onlineTestHelp": ["仅检查身份验证和模型连接，不采集或上传音频，仍可能计费。连接成功不代表语音质量。", "僅檢查身分驗證和模型連線，不擷取或上傳音訊，仍可能計費。連線成功不代表語音品質。", "Checks authentication and model connection without capturing or uploading audio. Charges may apply. A successful connection does not assess speech quality.", "認証とモデルへの接続を確認します。音声は収録・送信しませんが、課金される場合があります。接続の成功は音声品質の確認ではありません。"],
+        "onlineGoogleCaveat": ["Preview 模型：双语字幕、末尾输出和会话时长可能受模型、账户及服务限制。", "Preview 模型：雙語字幕、末尾輸出和工作階段時長可能受模型、帳戶及服務限制。", "Preview model: bilingual captions, final output and session duration may be limited by the model, account and service.", "Preview モデル：対訳字幕、末尾の出力、接続時間はモデル・アカウント・サービスの制限を受ける場合があります。"],
+        "onlineOpenAICaveat": ["中文译音的可用性取决于所选模型和账户。原文字幕使用在线 gpt-realtime-whisper，可能另计费用。", "中文譯音的可用性取決於所選模型和帳戶。原文字幕使用線上 gpt-realtime-whisper，可能另計費用。", "Chinese translated audio depends on the selected model and account. Source captions use online gpt-realtime-whisper and may incur additional charges.", "中国語の翻訳音声を利用できるかは、選択したモデルとアカウントによって異なります。原文字幕はオンラインの gpt-realtime-whisper を使用し、追加料金が発生する場合があります。"],
+        "onlineUsage": ["同传用量", "同傳用量", "Interpretation usage", "通訳使用量"],
+        "onlineUploaded": ["已上传音频", "已上傳音訊", "Uploaded audio", "送信音声"],
+        "onlineGenerated": ["收到的译音", "收到的譯音", "Received translation audio", "受信した翻訳音声"],
+        "onlinePlayed": ["已播放", "已播放", "Played", "再生済み"],
+        "onlineEstimatedCost": ["估算费用（USD）", "估算費用（USD）", "Estimated cost (USD)", "推定料金（USD）"],
+        "onlineUsageHelp": ["根据观察到的音频时长估算，不是账单。原文转写费用、静音及舍入规则待服务端确认。", "依觀察到的音訊時長估算，並非帳單。原文轉寫費用、靜音及進位規則待服務端確認。", "Estimated from observed audio duration, not an invoice. Source transcription charges, silence and rounding need provider confirmation.", "観測した音声時間による推定で、請求額ではありません。原文字幕、無音、丸め処理の課金は提供元で要確認です。"],
+        "onlinePlaybackSkipped": ["播放积压，已跳过陈旧译音。字幕仍保留。", "播放積壓，已略過過時譯音。字幕仍保留。", "Stale audio was skipped to reduce playback delay. Captions are retained.", "再生遅延を減らすため古い音声をスキップしました。字幕は保存されます。"],
+        "onlineIncompleteClose": ["收尾未获完整确认，末尾字幕可能不完整。", "收尾未獲完整確認，末尾字幕可能不完整。", "Closure was not fully confirmed; final captions may be incomplete.", "終了が完全には確認されず、末尾字幕が不足している可能性があります。"],
+        "online.idle": ["尚未连接", "尚未連線", "Not connected", "未接続"],
+        "online.connecting": ["正在连接同传服务", "正在連線同傳服務", "Connecting to interpretation service", "通訳サービスに接続中"],
+        "online.running": ["正在持续同传", "正在持續同傳", "Live interpretation running", "同時通訳中"],
+        "online.reconnecting": ["连接中断，正在有限重连；缺口已记录", "連線中斷，正在有限重連；缺口已記錄", "Reconnecting with a bounded retry policy; gaps are recorded", "接続が切れました。回数制限付きで再接続し、欠落を記録します"],
+        "online.pausing": ["已停止新增上传，正在收尾", "已停止新增上傳，正在收尾", "New uploads stopped; closing session", "新規送信を停止し、終了処理中"],
+        "online.paused": ["已暂停；继续将建立新连接", "已暫停；繼續將建立新連線", "Paused; resume creates a new connection", "一時停止中。再開すると新しく接続します"],
+        "online.finishing": ["已停止播放，正在保存末尾字幕", "已停止播放，正在儲存末尾字幕", "Playback stopped; saving final captions", "再生を停止し、末尾字幕を保存中"],
+        "online.ended": ["同传已结束", "同傳已結束", "Interpretation ended", "同時通訳終了"],
+        "online.failed": ["同传已中断；请检查原因后手动继续", "同傳已中斷；請檢查原因後手動繼續", "Interpretation interrupted; resolve the issue and resume manually", "通訳が中断しました。原因を確認して手動で再開してください"],
+        "online.storage": ["字幕保存失败，已停止上传和播放。请重试保存。", "字幕儲存失敗，已停止上傳和播放。請重試儲存。", "Caption saving failed. Uploads and playback stopped. Retry saving.", "字幕保存に失敗し、送信と再生を停止しました。保存を再試行してください。"],
+        "online.backpressure": ["上传积压超过两秒，已停止同传；不会补传旧音频。", "上傳積壓超過兩秒，已停止同傳；不會補傳舊音訊。", "Upload backlog exceeded two seconds. Interpretation stopped; old audio will not be replayed.", "送信待ちが2秒を超えたため停止しました。古い音声は再送しません。"],
+        "online.credentialMismatch": ["主 AI 服务不是所选厂商的官方服务，无法复用其 Key。", "主要 AI 服務不是所選廠商的官方服務，無法重用其 Key。", "The main AI service is not the selected provider's official service; its key cannot be reused.", "メイン AI は選択した提供元の公式サービスではないため、キーを再利用できません。"]
+    ]
+}

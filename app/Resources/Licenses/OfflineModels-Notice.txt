@@ -1,0 +1,7 @@
+ULecture offline dependency notices
+
+whisper.cpp v1.9.4 / ggml, commit 927cfce34f31707e17f2bff35c349632fb9e2c3a: MIT (full text alongside).
+Whisper multilingual base weights: OpenAI Whisper MIT; GGML distribution at fixed Hugging Face revision 5359861c739e955e79d9a303bcbc70fb988958b1.
+Silero VAD v6.2.0: snakers4/silero-vad MIT; GGML conversion from ggml-org/whisper-vad revision 9ffd54a1e1ee413ddf265af9913beaf518d1639b.
+
+Model SHA-256 digests, native source revision and exact packaged inputs are recorded in build-manifest.json and source code. PDFium and LibreOffice notices and source locations are included under Conversion. No Apple synthesized test recordings are bundled.
