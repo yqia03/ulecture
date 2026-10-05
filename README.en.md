@@ -6,7 +6,7 @@ Connect course materials, listening comprehension, and study notes in a native m
 
 Organize courses, read and annotate documents, take notes, and use live transcription, translation, and an AI study assistant. The interface supports English, Simplified Chinese, Traditional Chinese, and Japanese, with light and dark themes.
 
-[Download](https://github.com/yqia03/ulecture/releases/latest) · [中文说明](README.md) · [User guide](docs/ulecture/user-guide.md) · [Report an issue](https://github.com/yqia03/ulecture/issues)
+[Download](https://github.com/yqia03/ulecture/releases/latest) · [简体中文](README.zh-CN.md) · [User guide](docs/ulecture/user-guide.md) · [Report an issue](https://github.com/yqia03/ulecture/issues)
 
 [![Watch the introduction](assets/media/cover.jpg)](https://github.com/yqia03/ulecture/releases/download/v1.1.0/ULecture-introduction.mp4)
 

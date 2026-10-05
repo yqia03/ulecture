@@ -1,70 +1,70 @@
-<p align="center"><img src="assets/brand/ulecture-icon.png" width="144" alt="ULecture 应用图标"></p>
+<p align="center"><img src="assets/brand/ulecture-icon.png" width="144" alt="ULecture icon"></p>
 
 # ULecture
 
-把课堂资料、听课理解和学习记录连接起来。
+Connect course materials, listening comprehension, and study notes in a native macOS workspace.
 
-原生 macOS 学习工作空间：整理课程资料，阅读与批注课件，记录笔记，使用实时转写、翻译和 AI 助手。界面支持简体中文、繁体中文、English 和日本語，以及浅色、深色主题。
+Organize courses, read and annotate documents, take notes, and use live transcription, translation, and an AI study assistant. The interface supports English, Simplified Chinese, Traditional Chinese, and Japanese, with light and dark themes.
 
-[下载](https://github.com/yqia03/ulecture/releases/latest) · [使用指南](docs/ulecture/user-guide.md) · [English](README.en.md) · [问题反馈](https://github.com/yqia03/ulecture/issues)
+[Download](https://github.com/yqia03/ulecture/releases/latest) · [简体中文](README.zh-CN.md) · [User guide](docs/ulecture/user-guide.md) · [Report an issue](https://github.com/yqia03/ulecture/issues)
 
-[![ULecture 介绍](assets/media/cover.jpg)](https://github.com/yqia03/ulecture/releases/download/v1.1.0/ULecture-introduction.mp4)
+[![Watch the introduction](assets/media/cover.jpg)](https://github.com/yqia03/ulecture/releases/download/v1.1.0/ULecture-introduction.mp4)
 
-![连续逐行字幕预览](assets/media/preview.gif)
+![Continuous visual-line captions](assets/media/preview.gif)
 
-完整介绍片使用原创纯器乐音乐与中英文双语字幕，无旁白、演唱或哼唱。画面保留真实应用操作和连续逐行字幕，课程与文字均为专门制作的虚构演示资料。[音乐、字幕与可复现工程](media/README.md)。
+The introduction has original instrumental music and Chinese/English subtitles, with no narration, singing, or humming. It shows real application interaction and continuous caption scrolling using fictional course material. [Music, subtitles, and reproducible media project](media/README.md).
 
-## 可以做什么
+## Features
 
-- **课程与资料**：导入 PDF、PPT/PPTX、Markdown、TXT，创建文件夹及笔记。课程目录由应用管理，未知文件不会自动载入。
-- **阅读与记录**：PDF 阅读、批注及导出；块笔记支持文字、列表、表格、图片及历史版本。PPT 在本机转换为静态阅读 PDF，保留原件。
-- **课堂与独立同传**：本地识别加在线文本翻译，以及 Google、OpenAI 在线同传。字幕按实际视觉行连续滚动，可分别设置原译文行数、顺序、颜色、字号和透明度。
-- **两份自动 TXT**：每个会话持续保存纯原文 `transcript.txt` 与原文加译文的 `transcript-bilingual.txt`。同传页面提供两个 Finder 定位入口。
-- **学习辅助**：选择资料后提问、解释选区、生成笔记或总结；来源和版本可回看。文本及文档翻译可单独配置服务。
-- **数据管理**：本地存储、可恢复删除、导出、保存位置迁移及备份恢复。无 ULecture 账号、云同步或订阅。
+- **Courses and materials:** import PDF, PPT/PPTX, Markdown, and TXT; create folders and notes. The app manages course locations and only lists registered material.
+- **Reading and notes:** annotate and export PDFs; write block notes with text, lists, tables, images, and version history. Slides are converted locally into a static reading PDF while the original is retained.
+- **Classroom and independent interpretation:** local recognition with online text translation, plus Google and OpenAI online interpretation. Captions scroll by actual visual lines, with separate source/translation limits, ordering, font sizes, colors, and opacity.
+- **Two automatic TXT files:** every session maintains source-only `transcript.txt` and source-plus-translation `transcript-bilingual.txt`, with separate Finder actions.
+- **Study assistance:** ask questions about selected material, explain selections, and generate notes or summaries with saved sources and versions.
+- **Local data management:** recoverable deletion, exports, storage relocation, and backup/restore. No ULecture account, cloud sync, or subscription.
 
-## 界面一览
+## A closer look
 
-![课程阅读与笔记](assets/media/workspace.jpg)
+![Course reading and notes](assets/media/workspace.jpg)
 
-![块笔记与学习记录](assets/media/notes.jpg)
+![Block notes and study records](assets/media/notes.jpg)
 
-## 系统与安装
+## Requirements and installation
 
-构建目标为 **Apple Silicon、macOS 14 或更新版本**。Intel 不在当前发行范围。本次实际测试机器和系统见 [验证报告](VALIDATION.md)；最低系统及 M1/8 GB 不应被理解为已经实机验证。
+The build targets **Apple Silicon and macOS 14 or later**. Intel is outside the current distribution scope. [Validation scope](VALIDATION.md) lists the hardware and system actually tested; macOS 14 and M1/8 GB are not claimed as physically tested.
 
-1. 在 [Release](https://github.com/yqia03/ulecture/releases/latest) 下载应用压缩包或 DMG，并核对同页 SHA-256 校验文件。
-2. 将 `ULecture.app` 放入“应用程序”，再打开。
-3. 本发行包采用临时签名，**没有 Developer ID 签名或 Apple 公证**。macOS 可能阻止首次打开；确认来源与校验值后，按 [Apple 官方说明](https://support.apple.com/en-us/102445)中“隐私与安全性”的“仍要打开”流程处理，或自行从源码构建。不要关闭系统安全保护。
-4. 首次使用本地转写时准备离线模型；开始采集时才申请所需的麦克风或屏幕与系统音频录制权限。打开应用本身不会采集音频。
+1. Download the ZIP or DMG from the [Release page](https://github.com/yqia03/ulecture/releases/latest) and verify it against the accompanying SHA-256 file.
+2. Move `ULecture.app` into Applications and open it.
+3. This distribution has an ad-hoc signature and **no Developer ID signature or Apple notarization**. macOS may block the first launch. After verifying the source and checksum, follow [Apple's supported Privacy & Security “Open Anyway” flow](https://support.apple.com/en-us/102445), or build from source. Do not disable system security.
+4. Prepare the local models before local transcription. Microphone or screen/system-audio permissions are requested when you start the selected capture source. Launching the app does not start capture.
 
-发行包包含离线识别模型和本地文件转换运行环境，体积较大。使用本地阅读、笔记、转写不需要云服务 Key；翻译与 AI 功能需要自行配置账户，服务商可能收费。
+The download includes offline recognition models and local document conversion runtimes, so it is large. Local reading, notes, and transcription do not require a cloud key. Translation and AI features need your own provider account and may incur fees.
 
-## 首次设置与服务
+## Initial setup and providers
 
-在设置中分别配置“AI 服务”“文本翻译服务”“文档翻译服务”。支持 Google Gemini AI Studio、DeepSeek、OpenAI 和 OpenAI 兼容接口。兼容服务还需要 Base URL；可主动选择让文本或文档服务跟随 AI 服务。
+Settings separates AI, text translation, and document translation services. Providers include Google Gemini AI Studio, DeepSeek, OpenAI, and OpenAI-compatible endpoints. Compatible endpoints also require a Base URL. You can explicitly choose to share the AI service configuration with text or document translation.
 
-Key 保存在 macOS 钥匙串。保存或切换服务不会自动测试连接；点击测试才会发送请求。在线同传使用对应 Google/OpenAI 实时服务，模型、区域、账户及费用限制以服务商实际可用性为准。标为 Preview 的提供商模型继续保留该标识。
+Keys are stored in macOS Keychain. Saving or switching settings does not automatically send a test request; the Test action does. Online interpretation uses the corresponding Google/OpenAI real-time service. Model access, region, account eligibility, and fees depend on the provider. A provider's Preview label remains visible.
 
-本地识别主要面向英语、日语课堂；噪声、口音、专有名词和重叠发言会影响结果。AI 内容可能出错，请结合原始课件核对。离线转写不等于离线翻译；在线模式会将所选音源发送给服务商。
+Local recognition primarily targets English and Japanese lessons. Noise, accents, specialized vocabulary, and overlapping speakers affect results. AI output may contain errors; check it against the original material. Offline transcription does not mean offline translation. Online interpretation sends the selected audio source to the provider.
 
-## TXT、字幕与数据
+## TXT files, captions, and storage
 
-- 两份 TXT 来自同一已保存会话状态。翻译未完成时仍保留原文，正确译文到达后补入；修订不会不断追加重复段落。
-- 原译文缺乏可靠关联的在线字幕按独立轨道及真实顺序记录，不虚构逐句对应。未完成或中断状态会作简短标记。
-- 文件自动持续更新，无需手动导出。第二份写入失败时会显示保存未完成，并保留恢复依据；点击重试或重启后恢复。
-- 字幕行数指按当前宽度和字号排出的视觉行。四行窗口新增一行时，仅最上面一行离开；原文和译文分别自然换行。
-- 默认会话目录为 `~/Documents/ULecture/Transcripts`；实际路径显示在设置。课程和索引位于 `~/Library/Application Support/ULecture`。模型沿用旧版兼容路径，详见[数据指南](docs/ulecture/user-guide.md)。
-- 旧双语 `transcript.txt` 转换前保留原始恢复副本；数据库无法可靠恢复时不会用空文件覆盖旧内容。升级前仍建议创建备份。
+- Both UTF-8 TXT files come from the same saved session snapshot. Source text remains available while translation is pending; a translation is added only to its correct source revision. Revisions replace existing content without repeatedly appending duplicates.
+- Online source and translation streams without reliable alignment remain independent tracks in their actual order. The app does not invent sentence pairs. Incomplete or interrupted sections receive brief status markers.
+- Files update automatically. If either file cannot be published, the app reports incomplete saving and retains recovery information for retry or restart.
+- Caption limits count visual lines at the current width and font size. Adding one line to a four-line window removes only the top line. Source and translation wrap independently.
+- Sessions default to `~/Documents/ULecture/Transcripts`; Settings shows the actual location. Course and index data live under `~/Library/Application Support/ULecture`. Model caches retain the legacy compatibility path described in the [data guide](docs/ulecture/user-guide.md).
+- Migration preserves the original legacy bilingual TXT before conversion. An unreadable database will not cause an old file to be overwritten with empty content. Create a backup before upgrading.
 
-[隐私与网络行为](PRIVACY.md) · [文件格式与转换限制](app/docs/CONVERSION.md)
+[Privacy and network behavior](PRIVACY.md) · [Document conversion limitations](app/docs/CONVERSION.md)
 
-## 开发与许可
+## Development, licensing, and support
 
-使用 Xcode 命令行工具及项目锁定依赖构建，详见 [BUILDING.md](BUILDING.md)。源码、测试、构建脚本和资源锁进入 Git；模型、运行时、大型构建与私人数据不进入历史。
+Use Xcode command-line tools and the locked project dependencies. See [BUILDING.md](BUILDING.md) for bootstrap, build, and validation commands. Source, tests, build scripts, and resource locks belong in Git; models, runtimes, large builds, and private data do not.
 
-ULecture 自有源码以 **AGPL-3.0-only** 发布，见 [LICENSE](LICENSE)。第三方组件、模型、字体和媒体保留各自许可，见 [第三方声明](THIRD_PARTY_NOTICES.md)。分发包的对应源码与构建清单位于同版本 Release。
+Original ULecture source is licensed under **AGPL-3.0-only**; see [LICENSE](LICENSE). Third-party components, weights, fonts, and media retain their respective licenses. [Third-party notices](THIRD_PARTY_NOTICES.md) explain their provenance. The matching Release includes corresponding source archives and build manifests.
 
-[更新记录](CHANGELOG.md) · [验证范围](VALIDATION.md) · [媒体生成工程](media/README.md)
+[Changes](CHANGELOG.md) · [Validation scope](VALIDATION.md) · [Media project](media/README.md)
 
-反馈问题时请说明版本、系统、操作步骤及错误提示。不要提交 API Key、真实课程、录音、转写、个人路径或未经清理的日志。
+When [reporting an issue](https://github.com/yqia03/ulecture/issues), include the app version, macOS version, steps, and error message. Do not submit API keys, real course material, recordings, transcripts, personal paths, or unredacted logs.
